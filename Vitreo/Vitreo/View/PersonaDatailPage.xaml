@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Vitreo.ViewModel"
+             x:Class="Vitreo.View.PersonaDatailPage"
+             Title="Detalhes do Personagem"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:PersonageDetailPageViewModel></vm:PersonageDetailPageViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout x:Name="layoutDatail">
+            <Frame CornerRadius="5"
+                       Padding="5">
+                <ScrollView x:Name="scroolFull">
+                    <StackLayout Spacing="0" x:Name="layoutFull">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout HorizontalOptions="CenterAndExpand" x:Name="layoutData">
+                                <Image Grid.Row="1"
+                               Source="{Binding SlectResult.Thumbnail.portrait_uncanny}"
+                                       x:Name="imagePersonage"
+                                       AutomationId="imagePersonage"
+                               HeightRequest="200"
+                               WidthRequest="200"/>
+                                <Label Grid.Row="2"
+                                        Text="{Binding SlectResult.Name}"
+                                        x:Name="namePersonage"
+                                       AutomationId="namePersonage"
+                                        HorizontalOptions="CenterAndExpand"
+                                        TextColor="Red"/>
+                                <StackLayout Margin="0,25,0,0" Spacing="0" x:Name="layoutDercription">
+                                    <Label Grid.Row="3"
+                                       Text="{Binding SlectResult.Description}"
+                                           x:Name="descriptionPersonage"
+                                           AutomationId="descriptionPersonage"
+                                       HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                                <StackLayout Margin="0,25,0,0" Spacing="0" x:Name="layoutHq">
+                                    <Label Grid.Row="3"
+                                       Text="HQ's"
+                                       x:Name="titleHq"
+                                       HorizontalOptions="CenterAndExpand"
+                                       TextColor="Red"/>
+                                </StackLayout>
+                                <ListView ItemsSource="{Binding SlectResult.Comics.Items}" Margin="0,5,0,0" x:Name="listHq" AutomationId="listHq">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell IsEnabled="False">
+                                                <StackLayout Spacing="0" x:Name="layoutHq">
+                                                    <Label Text="{Binding Name}" x:Name="nameHq" AutomationId="nameHq"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

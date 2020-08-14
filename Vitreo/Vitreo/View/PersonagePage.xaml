@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Vitreo.ViewModel"
+             xmlns:tapped="clr-namespace:Vitreo.View.Component"
+             x:Class="Vitreo.View.PersonagePage"
+             Title="Detalhes do Personagem"
+             BackgroundColor="White">
+
+    <ContentPage.BindingContext>
+        <vm:PersonagePageViewModel></vm:PersonagePageViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout x:Name="layoutPersonage">
+            <Entry
+               Placeholder="Pesquisa"
+               x:Name="entryFiltro"
+                AutomationId="entryFiltro"
+               Text="{Binding Filtro, Mode=TwoWay}"
+               Margin="10">
+            </Entry>
+
+            <ListView ItemsSource="{Binding Results, Mode=TwoWay}" 
+                          x:Name="listPersonage"
+                          tapped:ItemTappedAttached.Command="{Binding SlectResultsCommand}"
+                          AutomationId="listPersonage"
+                          SelectedItem="{Binding SlectResult}"
+                          Margin="14,0,14,0"  
+                          BackgroundColor="White">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame CornerRadius="5"
+                                       Padding="0"
+                                       Margin="0,0,0,2">
+                                <Grid>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Grid.RowSpan="2"
+                                       Source="{Binding Thumbnail.portrait_uncanny}"
+                                           x:Name="imagePersonage"
+                                           Aspect="Fill"
+                                           AutomationId="imagePersonage"
+                                       HeightRequest="200"
+                                       WidthRequest="75"/>
+
+                                    <Label Grid.Column="1"
+                                           x:Name="personageName"
+                                           AutomationId="personageName"
+                                           VerticalOptions="Center"
+                                    Text="{Binding Name}"/>
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
