@@ -1,38 +1,28 @@
-# Desafio Xamarin.Forms
+Desafio Vitreo (Marvel)
 
-## Instruções
+App para busca de personagens Marvel.
+Conta com uma splashscreen feita em XAML, contendo uma imagem de fundo, e o logo da Marvel,
+com efeito de animação.
+Conta tambem com mais 2 Paginas em XAML
+ - A primeira disponibiliza a pagina de Filtro do Personagem, onde o usuario pode visualizar uma lista com
+os personagens retornados de uma pesquisa, podendo visualizar suas fotos e seus nbomes, 
+alem de poder efetuar uma pesquisa, utilizando 3 ou mais
+caracteres do nome dos personagens, com o submit do imput feito automaticamente, quando o filtro obtem mais que
+3 caracteres, o parametro de pesquisa do filtro e salvo no BD no aparelho assim que o input for confirmado.
+ - A segunda tela e aberta após o usuario clicar em um dos personagens da tela de filtro. Esta tela disponibiliza
+algumas informações do personagem pesquisado, Sua foto em escala maior, seu nome, sua historia e uma lista de HQ's
+referente ao personagem.
 
-- Faça um fork desse repositório
-- Trabalhe exclusivamente no seu fork
-- Os commits de seu fork precisa ter mensagens claras e objetivas, a cada commit explique a mudança e evolução.
-- Ao finalizar abra um PR(Pull Request) para esse repositório
 
-## Requerimentos
+App feito em Xamarin.forms, 
+	- Dependencias SQlite 
+		- sqlite-net-pcl
+		- SQLiteNetExtensions
 
-- O app deverá ser exclusivamente desenvolvido em Xamarin.Forms com XAML.
-- Faça uso de boas práticas de desenvolvimento
-- Use conceitos de componentização e reaproveitamento de código
-- O app deverá ter:
-  - Iconização diferente do padrão xamarin
-  - Uma splashscreen customizada semelhante para Android e iOS
-  - Deverá apresentar uma tela inicial com um filtro para pesquisa no topo com filtragem em tempo real dos personagens. Assim que iniciar a tela os personagens com imagem e nome deverá ser apresentado
-  - Ao efetuar o filtro através da pesquisa, deverá conter uma regra onde somente iniciar a pesquisa após 3 caracteres, filtrando os personagens
-  - Ao clicar em um personagem deverá enviar para uma tela de detalhes
-  - Tela de detalhes precisa ter a imagem do personagem, seu nome e sua história(descrição) e uma listagem dos HQ's
+	- Dependencias JSON
+		- Newtonsoft
+	
+	- API - MARVEL
+		- https://developer.marvel.com/docs
 
-## API
-
-- Deverá criar uma conta no link (https://www.marvel.com/signin) e seguir os passos de como implementar
-- Procura a api na documentação (https://developer.marvel.com/docs)
-
-## Desejável
-
-- MVVM
-- Possuir algum teste unitário ou Xamarin.UITest
-- Documentação (pode alterar o readme.md padrão)
-
-## Bonus
-
-- Animações de transição
-- Animações
-- Controle de cache
+Wesley Ferreira Anazario
